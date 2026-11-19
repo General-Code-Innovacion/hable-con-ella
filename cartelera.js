@@ -61,8 +61,8 @@ form_reserva.onsubmit = async e => {
   }
   const mensaje = `Quiero reservar la función ${actual.pelicula}`;
   r_mensaje.textContent = `“${mensaje}”`;
-  // Instagram no permite precargar texto en el DM: se copia al portapapeles al abrirlo.
-  r_dm.href = `https://ig.me/m/${HCE.instagram}`;
+  // Instagram no permite abrir el DM con texto: ig.me/m/ cae en el inicio de la app, el perfil sí abre bien.
+  r_dm.href = perfil;
   r_dm.onclick = () => navigator.clipboard?.writeText(mensaje).catch(() => {});
   form_reserva.hidden = true; r_listo.hidden = false;
 };
