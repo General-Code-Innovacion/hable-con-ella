@@ -1,0 +1,66 @@
+:root {
+  --fondo: #0e0c0a; --panel: #171411; --linea: #2e2924; --texto: #f4f1ea; --tenue: #9a948a;
+  --acento: #c8102e; --aviso: #e8b84a;
+  --display: "Archivo Black", sans-serif; --label: "Oswald", sans-serif; --body: "Archivo", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font: 16px/1.5 var(--body); min-height: 100vh; }
+body::before { /* grano de película */
+  content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .07; z-index: 9;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a { color: inherit; }
+.envoltura { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+@media (max-width: 560px) { .envoltura { padding: 0 16px; } }
+
+header { border-bottom: 1px solid var(--linea); }
+header .envoltura { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 16px; }
+.logo { font: 22px/1 var(--display); letter-spacing: -.02em; text-transform: uppercase; text-decoration: none; }
+.logo span { color: var(--acento); }
+nav a { font: 500 14px var(--label); text-transform: uppercase; letter-spacing: .12em; text-decoration: none; color: var(--tenue); margin-left: 20px; }
+nav a:hover { color: var(--texto); }
+
+.hero { padding: 64px 0 40px; }
+.kick { font: 500 13px var(--label); letter-spacing: .3em; text-transform: uppercase; color: var(--acento); }
+h1 { font: clamp(44px, 9vw, 112px)/.9 var(--display); text-transform: uppercase; margin: 8px 0 0; letter-spacing: -.03em; }
+h2 { font: 500 15px var(--label); letter-spacing: .25em; text-transform: uppercase; color: var(--tenue);
+     border-top: 1px solid var(--linea); padding-top: 14px; margin: 48px 0 18px; }
+
+.grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.funcion { background: var(--panel); border: 1px solid var(--linea); display: flex; flex-direction: column; }
+.poster { aspect-ratio: 2/3; background: #221d18 center/cover; display: flex; align-items: flex-end; padding: 16px;
+          font: 28px/1 var(--display); text-transform: uppercase; overflow: hidden; }
+.funcion .info { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.funcion h3 { font: 20px/1.1 var(--display); margin: 0; text-transform: uppercase; }
+.detalle { color: var(--tenue); font-size: 14px; }
+.poster.vacio { aspect-ratio: 3/2; color: var(--tenue); }
+.dia { font: 500 13px var(--label); letter-spacing: .15em; text-transform: uppercase; color: var(--acento); margin-top: 6px; }
+.hora { font: 600 26px var(--label); }
+.etiqueta { align-self: flex-start; font: 500 12px var(--label); letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; }
+.etiqueta.aviso { background: var(--aviso); color: #111; }
+.etiqueta.cancelada { background: var(--acento); }
+.cancelada-card { opacity: .55; }
+.cancelada-card .hora { text-decoration: line-through; }
+
+button, .boton { font: 600 15px var(--label); letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+  background: var(--texto); color: var(--fondo); border: 0; padding: 12px 18px; text-decoration: none; text-align: center; display: inline-block; }
+button:hover, .boton:hover { background: var(--acento); color: var(--texto); }
+button.sec { background: transparent; color: var(--texto); border: 1px solid var(--linea); }
+.funcion button { margin-top: auto; }
+
+dialog { background: var(--panel); color: var(--texto); border: 1px solid var(--linea); max-width: 420px; width: calc(100% - 32px); padding: 24px; }
+dialog::backdrop { background: rgba(0,0,0,.7); }
+label { display: block; font: 500 13px var(--label); letter-spacing: .1em; text-transform: uppercase; color: var(--tenue); margin: 14px 0 4px; }
+input { width: 100%; background: var(--fondo); color: var(--texto); border: 1px solid var(--linea); padding: 10px; font: 16px var(--body); }
+.acciones { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.nota { color: var(--tenue); font-size: 14px; }
+.error { color: #ff6b6b; }
+
+/* Cuenta regresiva de cine mientras carga */
+.conteo { display: grid; place-items: center; padding: 80px 0; }
+.conteo div { width: 120px; height: 120px; border: 2px solid var(--tenue); border-radius: 50%; display: grid; place-items: center; font: 64px var(--display); }
+.conteo span { position: absolute; opacity: 0; animation: n 1.5s infinite; }
+.conteo span:nth-child(2) { animation-delay: .5s; } .conteo span:nth-child(3) { animation-delay: 1s; }
+@keyframes n { 0%, 33% { opacity: 1; } 34%, 100% { opacity: 0; } }
+
+footer { border-top: 1px solid var(--linea); margin-top: 80px; padding: 28px 0; color: var(--tenue); font-size: 14px; }

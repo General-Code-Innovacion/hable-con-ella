@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hable con ella · Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Archivo+Black&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+<style>
+  .fila { background: var(--panel); border: 1px solid var(--linea); padding: 16px; margin-bottom: 12px; }
+  .fila header { border: 0; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+  .fila h3 { margin: 0; font: 20px var(--display); text-transform: uppercase; }
+  .fila button { padding: 8px 12px; font-size: 13px; }
+  .reservas { margin-top: 12px; border-top: 1px solid var(--linea); padding-top: 8px; }
+  .reservas div { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; flex-wrap: wrap; }
+  .boton.wa { background: #25d366; color: #0b2e17; padding: 8px 12px; font-size: 13px; }
+  .boton.wa.enviado { opacity: .5; }
+  #form-funcion { background: var(--panel); border: 1px solid var(--linea); padding: 20px; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  @media (max-width: 560px) { .dos { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header><div class="envoltura"><a class="logo" href="./">Hable <span>con</span> ella</a><nav><a href="#" id="salir" hidden>Salir</a></nav></div></header>
+
+<main class="envoltura">
+  <section class="hero"><div class="kick">Administración</div><h1>Funciones</h1></section>
+
+  <form id="login" style="max-width:380px">
+    <label for="l-correo">Correo</label><input id="l-correo" type="email" required autocomplete="username">
+    <label for="l-clave">Contraseña</label><input id="l-clave" type="password" required autocomplete="current-password">
+    <p class="error" id="l-error"></p>
+    <div class="acciones"><button>Entrar</button></div>
+  </form>
+
+  <div id="panel" hidden>
+    <form id="form-funcion">
+      <div class="kick" id="f-modo">Nueva función</div>
+      <div class="dos">
+        <div><label for="f-pelicula">Película</label><input id="f-pelicula" required></div>
+        <div><label for="f-fecha">Fecha y hora</label><input id="f-fecha" type="datetime-local" required></div>
+        <div><label for="f-detalle">Detalle (director · año · duración)</label><input id="f-detalle"></div>
+        <div><label for="f-poster">URL del póster (opcional)</label><input id="f-poster" type="url"></div>
+      </div>
+      <p class="error" id="f-error"></p>
+      <div class="acciones"><button>Guardar</button><button type="button" class="sec" id="f-limpiar">Limpiar</button></div>
+    </form>
+    <h2>Próximas funciones</h2>
+    <div id="lista"></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="comun.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
